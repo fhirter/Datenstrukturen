@@ -15,34 +15,20 @@ import java.util.List;
 // -- Daten entfernen an zufälligem Ort
 public class Main {
     public static void main(String[] args) {
-        DiDokReader didok = new DiDokReader();
-        MeasureTime time = new MeasureTime();
-        List<HashMap<String, String>> stations = new ArrayList<>();
+        final int iterations = 1;
 
-        didok.read(Integer.MAX_VALUE, stations);
-    }
+        List<HashMap<String, String>> stationsArray = new ArrayList<>();
 
-    public static void readSequential(List list) {
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-        }
-    }
+        StationsMonteCarlo monteCarloArray = new StationsMonteCarlo(iterations, stationsArray, 100000);
+        HashMap<String, Long> array = monteCarloArray.run();
 
-    public static void readRandom(List list) {
-        int size = list.size();
-        for (int i = 0; i < list.size(); i++) {
-            int index = (int) (Math.random()*size);
-            System.out.println(list.get(index));
-        }
-    }
+        List<HashMap<String, String>> stationsList = new LinkedList<>();
+        StationsMonteCarlo monteCarloList = new StationsMonteCarlo(iterations, stationsList, 100000);
+        HashMap<String, Long> list = monteCarloList.run();
 
-    public static void deleteRandom(List list) {
-        int size = list.size();
-        for (int i = 0; i < size; i++) {
-            int index = (int) (Math.random()*size);
-            list.remove(index);
-            size = list.size();
-        }
+        System.out.println(array);
+        System.out.println(list);
+
     }
 
 
