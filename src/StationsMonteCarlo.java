@@ -60,6 +60,9 @@ public class StationsMonteCarlo {
         DiDokReader didok = new DiDokReader();
         MeasureTime time = new MeasureTime();
         for (int i = 0; i < iterations; i++) {
+            if(i != iterations-1) {
+                data.clear();
+            }
             time.start();
             didok.read(dataSize, data);
             time.stop();
@@ -76,8 +79,8 @@ public class StationsMonteCarlo {
         result.put("readRandom", measureReadRandom());
         System.out.println("read sequential");
         result.put("readSequential", measureReadSequential());
-        System.out.println("delete random");
-        result.put("deleteRandom", measureDeleteRandom());
+        //System.out.println("delete random");
+      //  result.put("deleteRandom", measureDeleteRandom());
         return result;
     }
 }

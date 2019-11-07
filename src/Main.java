@@ -15,7 +15,7 @@ import java.util.List;
 // -- Daten entfernen an zufälligem Ort
 public class Main {
     public static void main(String[] args) {
-        final int iterations = 1;
+        final int iterations = 5;
 
         List<HashMap<String, String>> stationsArray = new ArrayList<>();
 

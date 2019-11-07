@@ -24,10 +24,10 @@ public class MeasureTime {
     }
 
     public long getMean() {
-        long sum =0;
+        long average =0;
         for (int i = 0; i < data.size(); i++) {
-            sum += data.get(i);
+            average = (average*(i) + data.get(i))/(i+1);
         }
-        return sum/data.size();
+        return average;
     }
 }
